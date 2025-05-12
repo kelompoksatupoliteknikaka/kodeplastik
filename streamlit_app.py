@@ -12,63 +12,101 @@ CLASS_NAMES = {
 }
 
 # Data lengkap untuk masing-masing kode RIC
+import streamlit as st
+
+# --- Data Kode Plastik (seperti sebelumnya) ---
 ric_info = {
     "1": {
         "material": "Polyethylene Terephthalate (PET)",
         "example": "Botol air mineral, botol minuman ringan, kemasan minyak goreng",
         "health_risk": "Aman untuk sekali pakai. Pemakaian ulang atau panas bisa lepas antimon.",
         "recycling_difficulty": "Mudah",
-        "recycling_method": "Cuci, cacah, lelehkan; jadi serat, karpet, wadah non-makanan"
+        "recycling_method": "Cuci, cacah, lelehkan; jadi serat, karpet, wadah non-makanan",
+        "environmental_impact": {
+            "carbon_emission_kg_per_kg": 2.1,  # Contoh data
+            "decomposition_time_years": 450,  # Contoh data
+            "toxicity_potential": "Rendah"  # Contoh data
+        }
     },
     "2": {
         "material": "High-Density Polyethylene (HDPE)",
         "example": "Botol susu, galon air, wadah deterjen",
         "health_risk": "Umumnya aman dan stabil",
         "recycling_difficulty": "Mudah",
-        "recycling_method": "Cacah, lelehkan, jadi pipa, ember, produk rumah tangga"
+        "recycling_method": "Cacah, lelehkan, jadi pipa, ember, produk rumah tangga",
+        "environmental_impact": {
+            "carbon_emission_kg_per_kg": 1.9,  # Contoh data
+            "decomposition_time_years": 500,  # Contoh data
+            "toxicity_potential": "Rendah"  # Contoh data
+        }
     },
     "3": {
         "material": "Polyvinyl Chloride (PVC)",
         "example": "Pipa, lantai vinyl, mainan",
         "health_risk": "Mengandung ftalat, berisiko jika dibakar (dioksin)",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Daur ulang terbatas, jadi panel, selang"
+        "recycling_method": "Daur ulang terbatas, jadi panel, selang",
+        "environmental_impact": {
+            "carbon_emission_kg_per_kg": 3.5,  # Contoh data
+            "decomposition_time_years": ">500",  # Contoh data
+            "toxicity_potential": "Sedang"  # Contoh data
+        }
     },
     "4": {
         "material": "Low-Density Polyethylene (LDPE)",
         "example": "Kantong plastik, pembungkus makanan",
         "health_risk": "Aman, tapi sering tidak didaur ulang",
         "recycling_difficulty": "Sedang",
-        "recycling_method": "Lelehkan, jadi ubin, kantong sampah"
+        "recycling_method": "Lelehkan, jadi ubin, kantong sampah",
+        "environmental_impact": {
+            "carbon_emission_kg_per_kg": 2.3,  # Contoh data
+            "decomposition_time_years": 400,  # Contoh data
+            "toxicity_potential": "Rendah"  # Contoh data
+        }
     },
     "5": {
         "material": "Polypropylene (PP)",
         "example": "Wadah microwave, sedotan, tutup botol",
         "health_risk": "Umumnya aman",
         "recycling_difficulty": "Sedang",
-        "recycling_method": "Cacah, jadi komponen otomotif, wadah"
+        "recycling_method": "Cacah, jadi komponen otomotif, wadah",
+        "environmental_impact": {
+            "carbon_emission_kg_per_kg": 2.0,  # Contoh data
+            "decomposition_time_years": 20-30,  # Contoh data (bisa bervariasi)
+            "toxicity_potential": "Rendah"  # Contoh data
+        }
     },
     "6": {
         "material": "Polystyrene (PS)",
         "example": "Styrofoam, gelas kopi, wadah cepat saji",
         "health_risk": "Berpotensi bahaya (mengandung stirena)",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Beberapa bisa jadi bahan isolasi"
+        "recycling_method": "Beberapa bisa jadi bahan isolasi",
+        "environmental_impact": {
+            "carbon_emission_kg_per_kg": 3.0,  # Contoh data
+            "decomposition_time_years": ">500",  # Contoh data
+            "toxicity_potential": "Sedang"  # Contoh data
+        }
     },
     "7": {
         "material": "Other (PC, PLA, dll.)",
         "example": "Botol bayi (PC), galon keras, PLA bio",
         "health_risk": "Bervariasi (PC bisa mengandung BPA)",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Tergantung bahan; PLA bisa dikomposkan industri"
-    }
+        "recycling_method": "Tergantung bahan; PLA bisa dikomposkan industri",
+        "environmental_impact": {
+            "carbon_emission_kg_per_kg": "Bervariasi",  # Contoh data
+            "decomposition_time_years": "Bervariasi",  # Contoh data
+            "toxicity_potential": "Bervariasi"  # Contoh data
+        }
+    },
 }
 
 # --- Sidebar Navigasi ---
 st.sidebar.title("Navigasi")
-page = st.sidebar.radio("Pilih Halaman", ["Identifikasi", "Tentang Plastik", "Riwayat"])
+page = st.sidebar.radio("Pilih Halaman", ["Identifikasi", "Tentang Plastik", "Lokasi Daur Ulang", "Kalkulator Dampak", "Riwayat"])
 
-# --- Halaman: Identifikasi ---
+# --- Halaman: Identifikasi (seperti sebelumnya) ---
 if page == "Identifikasi":
     st.title("Identifikasi Kode Plastik")
     st.write("Masukkan nomor kode plastik yang tertera di bagian bawah wadah.")
@@ -83,22 +121,18 @@ if page == "Identifikasi":
                     f"*Tingkat Daur Ulang:* {ric_info[plastic_code_input]['recycling_difficulty']}\n"
                     f"*Metode Daur Ulang:* {ric_info[plastic_code_input]['recycling_method']}")
 
-            # Simpan ke session_state sebagai riwayat
+            st.session_state["identified_code"] = plastic_code_input  # Simpan kode untuk kalkulator
+
             if "history" not in st.session_state:
                 st.session_state["history"] = []
-
-            st.session_state["history"].append({
-                "input_code": plastic_code_input,
-                "material": ric_info[plastic_code_input]['material']
-            })
+            st.session_state["history"].append({"input_code": plastic_code_input, "material": ric_info[plastic_code_input]['material']})
         elif plastic_code_input:
             st.warning("Kode plastik tidak valid. Silakan masukkan nomor 1 hingga 7.")
 
-# --- Halaman: Tentang Plastik ---
+# --- Halaman: Tentang Plastik (seperti sebelumnya) ---
 elif page == "Tentang Plastik":
     st.title("Tentang Kode Daur Ulang Plastik")
     st.write("Berikut adalah informasi tentang berbagai jenis plastik berdasarkan kode daur ulang:")
-
     for code, info in ric_info.items():
         st.subheader(f"Kode {code}: {info['material']}")
         st.write(f"*Contoh Penggunaan:* {info['example']}")
@@ -107,22 +141,47 @@ elif page == "Tentang Plastik":
         st.write(f"*Metode Daur Ulang:* {info['recycling_method']}")
         st.markdown("---")
 
-# --- Halaman: Riwayat ---
+# --- Halaman: Kalkulator Dampak Lingkungan ---
+elif page == "Kalkulator Dampak":
+    st.title("Kalkulator Dampak Lingkungan Plastik")
+    st.write("Hitung perkiraan dampak lingkungan dari penggunaan plastik.")
+
+    plastic_code_calc = st.selectbox("Pilih Kode Plastik:", list(ric_info.keys()))
+    quantity = st.number_input("Masukkan perkiraan jumlah (dalam kg):", min_value=0.01, step=0.1)
+
+    if st.button("Hitung Dampak"):
+        if plastic_code_calc in ric_info and "environmental_impact" in ric_info[plastic_code_calc]:
+            impact_data = ric_info[plastic_code_calc]["environmental_impact"]
+
+            st.subheader(f"Perkiraan Dampak Lingkungan untuk Kode {plastic_code_calc} ({ric_info[plastic_code_calc]['material']}):")
+            if isinstance(impact_data["carbon_emission_kg_per_kg"], (int, float)):
+                st.write(f"- Emisi Karbon (perkiraan): {impact_data['carbon_emission_kg_per_kg'] * quantity:.2f} kg CO2")
+            else:
+                st.write(f"- Emisi Karbon (perkiraan): {impact_data['carbon_emission_kg_per_kg']}")
+
+            if isinstance(impact_data["decomposition_time_years"], (int, float, str)):
+                st.write(f"- Perkiraan Waktu Dekomposisi: {impact_data['decomposition_time_years']} tahun")
+            else:
+                st.write(f"- Perkiraan Waktu Dekomposisi: {impact_data['decomposition_time_years']}")
+
+            st.write(f"- Potensi Toksisitas: {impact_data['toxicity_potential']}")
+        else:
+            st.warning("Data dampak lingkungan untuk kode plastik ini belum tersedia.")
+
+# --- Halaman: Riwayat (seperti sebelumnya) ---
 elif page == "Riwayat":
     st.title("Riwayat Pencarian Kode Plastik")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
-            # Pastikan kunci 'input_code' ada sebelum mencoba mengaksesnya
             if 'input_code' in item:
                 st.write(f"{idx}. *Kode yang Dicari:* {item['input_code']}")
-            # Pastikan kunci 'material' ada sebelum mencoba mengaksesnya
             if 'material' in item:
                 st.write(f"Material: {item['material']}")
             st.markdown("---")
     else:
         st.info("Belum ada riwayat pencarian kode plastik dalam sesi ini.")
 
-# --- Footer ---
+# --- Footer (seperti sebelumnya) ---
 st.markdown("---")
 st.markdown("Dibuat dengan Streamlit oleh [Kelompok 1/PLI]")
 
