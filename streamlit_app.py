@@ -1,6 +1,4 @@
 import streamlit as st
-from PIL import Image
-import numpy as np
 
 # --- Data Kode Plastik ---
 CLASS_NAMES = {
@@ -66,68 +64,35 @@ ric_info = {
     }
 }
 
-
-# --- Fungsi Identifikasi Placeholder ---
-def identify_plastic_code(image_file):
-    image = Image.open(image_file)
-    width, height = image.size
-
-    if width * height > 15000 and image.format in ["JPEG", "JPG"]:
-        return {"prediction": "1", "probability": 0.75}  # Mengembalikan kode saja
-    elif image.format == "PNG":
-        return {"prediction": "2", "probability": 0.82}  # Mengembalikan kode saja
-    elif "styrofoam" in str(image_file.name).lower():
-        return {"prediction": "6", "probability": 0.68}  # Mengembalikan kode saja
-    else:
-        return {"prediction": "Tidak dapat mengidentifikasi", "probability": 0.5}
-
 # --- Sidebar Navigasi ---
 st.sidebar.title("Navigasi")
 page = st.sidebar.radio("Pilih Halaman", ["Identifikasi", "Tentang Plastik", "Riwayat"])
 
 # --- Halaman: Identifikasi ---
 if page == "Identifikasi":
-    st.title("Aplikasi Identifikasi Kode Plastik Berbasis Gambar")
-    st.write("Unggah gambar dari bagian bawah wadah plastik yang menunjukkan kode daur ulang.")
+    st.title("Identifikasi Kode Plastik")
+    st.write("Masukkan nomor kode plastik yang tertera di bagian bawah wadah.")
 
-    uploaded_file = st.file_uploader("Pilih gambar kode plastik...", type=["jpg", "jpeg", "png"])
+    plastic_code_input = st.text_input("Nomor Kode Plastik:")
+    if st.button("Cari Informasi"):
+        if plastic_code_input in ric_info:
+            st.subheader(f"Informasi Kode Plastik: {plastic_code_input}")
+            st.info(f"*Material:* {ric_info[plastic_code_input]['material']}\n"
+                    f"*Contoh Penggunaan:* {ric_info[plastic_code_input]['example']}\n"
+                    f"*Risiko Kesehatan:* {ric_info[plastic_code_input]['health_risk']}\n"
+                    f"*Tingkat Daur Ulang:* {ric_info[plastic_code_input]['recycling_difficulty']}\n"
+                    f"*Metode Daur Ulang:* {ric_info[plastic_code_input]['recycling_method']}")
 
-    if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        st.image(image, caption="Gambar yang Diunggah.", use_column_width=True)
+            # Simpan ke session_state sebagai riwayat
+            if "history" not in st.session_state:
+                st.session_state["history"] = []
 
-        if st.button("Identifikasi"):
-            with st.spinner("Menganalisis gambar..."):
-                result = identify_plastic_code(uploaded_file)
-
-            st.subheader("Hasil Identifikasi:")
-            if "prediction" in result:
-                predicted_code = result["prediction"]
-                st.write(f"*Kode Plastik yang Terdeteksi:* {predicted_code}")
-                st.write(f"*Probabilitas:* {result['probability']:.2f}")
-                if predicted_code in ric_info:
-                    st.info(f"*Informasi Tambahan:*\n\n"
-                            f"*Material:* {ric_info[predicted_code]['material']}\n"
-                            f"*Contoh Penggunaan:* {ric_info[predicted_code]['example']}\n"
-                            f"*Risiko Kesehatan:* {ric_info[predicted_code]['health_risk']}\n"
-                            f"*Tingkat Daur Ulang:* {ric_info[predicted_code]['recycling_difficulty']}\n"
-                            f"*Metode Daur Ulang:* {ric_info[predicted_code]['recycling_method']}")
-                elif predicted_code == "Tidak dapat mengidentifikasi":
-                    st.warning("Tidak dapat mengidentifikasi kode plastik. Coba unggah gambar lain.")
-
-                # Simpan ke session_state sebagai riwayat
-                if "history" not in st.session_state:
-                    st.session_state["history"] = []
-
-                st.session_state["history"].append({
-                    "filename": uploaded_file.name,
-                    "prediction": predicted_code,
-                    "probability": result["probability"]
-                })
-            else:
-                st.error("Terjadi kesalahan dalam proses identifikasi.")
-    else:
-        st.info("Silakan unggah gambar kode plastik untuk memulai identifikasi.")
+            st.session_state["history"].append({
+                "input_code": plastic_code_input,
+                "material": ric_info[plastic_code_input]['material']
+            })
+        elif plastic_code_input:
+            st.warning("Kode plastik tidak valid. Silakan masukkan nomor 1 hingga 7.")
 
 # --- Halaman: Tentang Plastik ---
 elif page == "Tentang Plastik":
@@ -144,17 +109,14 @@ elif page == "Tentang Plastik":
 
 # --- Halaman: Riwayat ---
 elif page == "Riwayat":
-    st.title("Riwayat Identifikasi")
+    st.title("Riwayat Pencarian Kode Plastik")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
-            st.write(f"{idx}. *Nama File:* {item['filename']}")
-            st.write(f"Prediksi Kode: {item['prediction']} | Probabilitas: {item['probability']:.2f}")
-            if item['prediction'] in ric_info:
-                st.write(f"Material: {ric_info[item['prediction']]['material']}")
+            st.write(f"{idx}. *Kode yang Dicari:* {item['input_code']}")
+            st.write(f"Material: {item['material']}")
             st.markdown("---")
     else:
-        st.info("Belum ada riwayat identifikasi dalam sesi ini.")
-
+        st.info("Belum ada riwayat pencarian kode plastik dalam sesi ini.")
 
 # --- Footer ---
 st.markdown("---")
