@@ -13,15 +13,59 @@ CLASS_NAMES = {
     6: "7 (Lain-lain)"
 }
 
-PLASTIC_INFO = {
-    "1 (PET atau PETE)": "Polyethylene Terephthalate. Umumnya digunakan untuk botol minuman ringan...",
-    "2 (HDPE)": "High-Density Polyethylene. Digunakan untuk botol susu, botol deterjen...",
-    "3 (PVC atau V)": "Polyvinyl Chloride. Digunakan dalam pipa, kabel, mainan...",
-    "4 (LDPE)": "Low-Density Polyethylene. Digunakan untuk kantong plastik, cling wrap...",
-    "5 (PP)": "Polypropylene. Digunakan untuk wadah makanan, tutup botol...",
-    "6 (PS)": "Polystyrene (Styrofoam). Digunakan untuk wadah makanan sekali pakai...",
-    "7 (Lain-lain)": "Kategori ini mencakup semua jenis plastik lain seperti PC, PLA..."
+# Data lengkap untuk masing-masing kode RIC
+ric_info = {
+    "1": {
+        "material": "Polyethylene Terephthalate (PET)",
+        "example": "Botol air mineral, botol minuman ringan, kemasan minyak goreng",
+        "health_risk": "Aman untuk sekali pakai. Pemakaian ulang atau panas bisa lepas antimon.",
+        "recycling_difficulty": "Mudah",
+        "recycling_method": "Cuci, cacah, lelehkan; jadi serat, karpet, wadah non-makanan"
+    },
+    "2": {
+        "material": "High-Density Polyethylene (HDPE)",
+        "example": "Botol susu, galon air, wadah deterjen",
+        "health_risk": "Umumnya aman dan stabil",
+        "recycling_difficulty": "Mudah",
+        "recycling_method": "Cacah, lelehkan, jadi pipa, ember, produk rumah tangga"
+    },
+    "3": {
+        "material": "Polyvinyl Chloride (PVC)",
+        "example": "Pipa, lantai vinyl, mainan",
+        "health_risk": "Mengandung ftalat, berisiko jika dibakar (dioksin)",
+        "recycling_difficulty": "Sulit",
+        "recycling_method": "Daur ulang terbatas, jadi panel, selang"
+    },
+    "4": {
+        "material": "Low-Density Polyethylene (LDPE)",
+        "example": "Kantong plastik, pembungkus makanan",
+        "health_risk": "Aman, tapi sering tidak didaur ulang",
+        "recycling_difficulty": "Sedang",
+        "recycling_method": "Lelehkan, jadi ubin, kantong sampah"
+    },
+    "5": {
+        "material": "Polypropylene (PP)",
+        "example": "Wadah microwave, sedotan, tutup botol",
+        "health_risk": "Umumnya aman",
+        "recycling_difficulty": "Sedang",
+        "recycling_method": "Cacah, jadi komponen otomotif, wadah"
+    },
+    "6": {
+        "material": "Polystyrene (PS)",
+        "example": "Styrofoam, gelas kopi, wadah cepat saji",
+        "health_risk": "Berpotensi bahaya (mengandung stirena)",
+        "recycling_difficulty": "Sulit",
+        "recycling_method": "Beberapa bisa jadi bahan isolasi"
+    },
+    "7": {
+        "material": "Other (PC, PLA, dll.)",
+        "example": "Botol bayi (PC), galon keras, PLA bio",
+        "health_risk": "Bervariasi (PC bisa mengandung BPA)",
+        "recycling_difficulty": "Sulit",
+        "recycling_method": "Tergantung bahan; PLA bisa dikomposkan industri"
+    }
 }
+
 
 # --- Fungsi Identifikasi Placeholder ---
 def identify_plastic_code(image_file):
