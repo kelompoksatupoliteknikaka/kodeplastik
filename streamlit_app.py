@@ -141,33 +141,6 @@ elif page == "Tentang Plastik":
         st.write(f"*Metode Daur Ulang:* {info['recycling_method']}")
         st.markdown("---")
 
-# --- Halaman: Kalkulator Dampak Lingkungan ---
-elif page == "Kalkulator Dampak":
-    st.title("Kalkulator Dampak Lingkungan Plastik")
-    st.write("Hitung perkiraan dampak lingkungan dari penggunaan plastik.")
-
-    plastic_code_calc = st.selectbox("Pilih Kode Plastik:", list(ric_info.keys()))
-    quantity = st.number_input("Masukkan perkiraan jumlah (dalam kg):", min_value=0.01, step=0.1)
-
-    if st.button("Hitung Dampak"):
-        if plastic_code_calc in ric_info and "environmental_impact" in ric_info[plastic_code_calc]:
-            impact_data = ric_info[plastic_code_calc]["environmental_impact"]
-
-            st.subheader(f"Perkiraan Dampak Lingkungan untuk Kode {plastic_code_calc} ({ric_info[plastic_code_calc]['material']}):")
-            if isinstance(impact_data["carbon_emission_kg_per_kg"], (int, float)):
-                st.write(f"- Emisi Karbon (perkiraan): {impact_data['carbon_emission_kg_per_kg'] * quantity:.2f} kg CO2")
-            else:
-                st.write(f"- Emisi Karbon (perkiraan): {impact_data['carbon_emission_kg_per_kg']}")
-
-            if isinstance(impact_data["decomposition_time_years"], (int, float, str)):
-                st.write(f"- Perkiraan Waktu Dekomposisi: {impact_data['decomposition_time_years']} tahun")
-            else:
-                st.write(f"- Perkiraan Waktu Dekomposisi: {impact_data['decomposition_time_years']}")
-
-            st.write(f"- Potensi Toksisitas: {impact_data['toxicity_potential']}")
-        else:
-            st.warning("Data dampak lingkungan untuk kode plastik ini belum tersedia.")
-
 # --- Halaman: Riwayat (seperti sebelumnya) ---
 elif page == "Riwayat":
     st.title("Riwayat Pencarian Kode Plastik")
