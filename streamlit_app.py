@@ -133,7 +133,7 @@ for code, info in PLASTIC_INFO.items():
         st.write(info)
 
 # --- Halaman: Riwayat ---
-elif page == "Riwayat":
+elif page == "Riwayat" :
     st.title("Riwayat Identifikasi")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
