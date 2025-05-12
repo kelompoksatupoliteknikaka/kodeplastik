@@ -104,7 +104,7 @@ ric_info = {
 
 # --- Sidebar Navigasi ---
 st.sidebar.title("Navigasi")
-page = st.sidebar.radio("Pilih Halaman", ["Identifikasi", "Tentang Plastik", "Lokasi Daur Ulang", "Kalkulator Dampak", "Riwayat"])
+page = st.sidebar.radio("Pilih Halaman", ["Identifikasi", "Tentang Plastik", "Kalkulator Dampak", "Riwayat"])
 
 # --- Halaman: Identifikasi (seperti sebelumnya) ---
 if page == "Identifikasi":
