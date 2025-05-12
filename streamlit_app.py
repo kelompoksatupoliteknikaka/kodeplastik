@@ -133,15 +133,16 @@ for code, info in PLASTIC_INFO.items():
         st.write(info)
 
 # --- Halaman: Riwayat ---
-elif page == "Riwayat" :
+elif page == "Riwayat":
     st.title("Riwayat Identifikasi")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
-            st.write(f"**{idx}. Nama File:** {item['filename']}")
-            st.write(f"Prediksi: {item['prediction']} | Probabilitas: {item['probability']:.2f}")
+            st.write(f"{idx}. Nama File:** {item['filename']}")
+            st.write(f"*Prediksi:* {item['prediction']} | Probabilitas: {item['probability']:.2f}")
             st.markdown("---")
     else:
         st.info("Belum ada riwayat identifikasi dalam sesi ini.")
+
 
 # --- Footer ---
 st.markdown("---")
