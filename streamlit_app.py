@@ -73,11 +73,11 @@ def identify_plastic_code(image_file):
     width, height = image.size
 
     if width * height > 15000 and image.format in ["JPEG", "JPG"]:
-        return {"prediction": "1 (PET atau PETE)", "probability": 0.75}
+        return {"prediction": "1", "probability": 0.75}  # Mengembalikan kode saja
     elif image.format == "PNG":
-        return {"prediction": "2 (HDPE)", "probability": 0.82}
+        return {"prediction": "2", "probability": 0.82}  # Mengembalikan kode saja
     elif "styrofoam" in str(image_file.name).lower():
-        return {"prediction": "6 (PS)", "probability": 0.68}
+        return {"prediction": "6", "probability": 0.68}  # Mengembalikan kode saja
     else:
         return {"prediction": "Tidak dapat mengidentifikasi", "probability": 0.5}
 
@@ -102,11 +102,17 @@ if page == "Identifikasi":
 
             st.subheader("Hasil Identifikasi:")
             if "prediction" in result:
-                st.write(f"**Kode Plastik yang Terdeteksi:** *{result['prediction']}*")
-                st.write(f"**Probabilitas:** *{result['probability']:.2f}*")
-                if result["prediction"] in PLASTIC_INFO:
-                    st.info(PLASTIC_INFO[result["prediction"]])
-                elif result["prediction"] == "Tidak dapat mengidentifikasi":
+                predicted_code = result["prediction"]
+                st.write(f"*Kode Plastik yang Terdeteksi:* {predicted_code}")
+                st.write(f"*Probabilitas:* {result['probability']:.2f}")
+                if predicted_code in ric_info:
+                    st.info(f"*Informasi Tambahan:*\n\n"
+                            f"*Material:* {ric_info[predicted_code]['material']}\n"
+                            f"*Contoh Penggunaan:* {ric_info[predicted_code]['example']}\n"
+                            f"*Risiko Kesehatan:* {ric_info[predicted_code]['health_risk']}\n"
+                            f"*Tingkat Daur Ulang:* {ric_info[predicted_code]['recycling_difficulty']}\n"
+                            f"*Metode Daur Ulang:* {ric_info[predicted_code]['recycling_method']}")
+                elif predicted_code == "Tidak dapat mengidentifikasi":
                     st.warning("Tidak dapat mengidentifikasi kode plastik. Coba unggah gambar lain.")
 
                 # Simpan ke session_state sebagai riwayat
@@ -115,7 +121,7 @@ if page == "Identifikasi":
 
                 st.session_state["history"].append({
                     "filename": uploaded_file.name,
-                    "prediction": result["prediction"],
+                    "prediction": predicted_code,
                     "probability": result["probability"]
                 })
             else:
@@ -128,17 +134,23 @@ elif page == "Tentang Plastik":
     st.title("Tentang Kode Daur Ulang Plastik")
     st.write("Berikut adalah informasi tentang berbagai jenis plastik berdasarkan kode daur ulang:")
 
-for code, info in PLASTIC_INFO.items():
-        st.subheader(code)
-        st.write(info)
+    for code, info in ric_info.items():
+        st.subheader(f"Kode {code}: {info['material']}")
+        st.write(f"*Contoh Penggunaan:* {info['example']}")
+        st.write(f"*Risiko Kesehatan:* {info['health_risk']}")
+        st.write(f"*Tingkat Daur Ulang:* {info['recycling_difficulty']}")
+        st.write(f"*Metode Daur Ulang:* {info['recycling_method']}")
+        st.markdown("---")
 
 # --- Halaman: Riwayat ---
 elif page == "Riwayat":
     st.title("Riwayat Identifikasi")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
-            st.write(f"{idx}. Nama File:** {item['filename']}")
-            st.write(f"*Prediksi:* {item['prediction']} | Probabilitas: {item['probability']:.2f}")
+            st.write(f"{idx}. *Nama File:* {item['filename']}")
+            st.write(f"Prediksi Kode: {item['prediction']} | Probabilitas: {item['probability']:.2f}")
+            if item['prediction'] in ric_info:
+                st.write(f"Material: {ric_info[item['prediction']]['material']}")
             st.markdown("---")
     else:
         st.info("Belum ada riwayat identifikasi dalam sesi ini.")
@@ -147,5 +159,8 @@ elif page == "Riwayat":
 # --- Footer ---
 st.markdown("---")
 st.markdown("Dibuat dengan Streamlit oleh [Kelompok 1/PLI]")
+
+
+
 
     
