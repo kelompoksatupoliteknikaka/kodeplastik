@@ -128,7 +128,7 @@ elif page == "Tentang Plastik":
     st.title("Tentang Kode Daur Ulang Plastik")
     st.write("Berikut adalah informasi tentang berbagai jenis plastik berdasarkan kode daur ulang:")
 
-    for code, info in PLASTIC_INFO.items():
+for code, info in PLASTIC_INFO.items():
         st.subheader(code)
         st.write(info)
 
