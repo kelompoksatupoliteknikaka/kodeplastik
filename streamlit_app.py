@@ -112,8 +112,12 @@ elif page == "Riwayat":
     st.title("Riwayat Pencarian Kode Plastik")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
-            st.write(f"{idx}. *Kode yang Dicari:* {item['input_code']}")
-            st.write(f"Material: {item['material']}")
+            # Pastikan kunci 'input_code' ada sebelum mencoba mengaksesnya
+            if 'input_code' in item:
+                st.write(f"{idx}. *Kode yang Dicari:* {item['input_code']}")
+            # Pastikan kunci 'material' ada sebelum mencoba mengaksesnya
+            if 'material' in item:
+                st.write(f"Material: {item['material']}")
             st.markdown("---")
     else:
         st.info("Belum ada riwayat pencarian kode plastik dalam sesi ini.")
