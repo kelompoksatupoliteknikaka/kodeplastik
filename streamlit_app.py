@@ -1,3 +1,5 @@
+# REVISI PENUH UNTUK APLIKASI STREAMLIT KODE PLASTIK
+
 import streamlit as st
 
 # --- CSS Kustom ---
@@ -23,6 +25,9 @@ st.markdown(
         border-radius: 5px;
         padding: 10px;
     }
+    .stRadio > label {
+        font-weight: bold;
+    }
     .info-box {
         background-color: #f0f8ff;
         border: 1px solid #e0e0e0;
@@ -42,63 +47,63 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- Data Kode Plastik ---
+# --- Data Kode Plastik Lengkap ---
 ric_info = {
     "1": {
         "material": "Polyethylene Terephthalate (PET)",
         "example": "Botol air mineral, botol soda, kemasan minyak goreng.",
-        "health_risk": "Aman untuk sekali pakai, tidak dianjurkan digunakan ulang terutama untuk air panas.",
-        "environment_risk": "PET banyak ditemukan di perairan dan mudah terbawa angin. Tidak terurai secara alami, mengancam hewan laut, serta bisa menjadi mikroplastik.",
+        "health_risk": "Aman untuk sekali pakai. Tidak disarankan dipakai ulang, terutama untuk air panas, karena dapat melepaskan zat kimia berbahaya seperti antimony.",
+        "environment_risk": "PET sering tidak masuk sistem daur ulang dan bisa mencemari laut serta termakan satwa. Terurai menjadi mikroplastik yang masuk ke rantai makanan.",
         "recycling_difficulty": "Mudah",
-        "recycling_method": "Cuci, cacah, lelehkan. Hasil daur ulang: serat sintetis (polyester), karpet, tali plastik, wadah non-makanan."
+        "recycling_method": "Cuci, cacah, lelehkan. Produk: serat sintetis (polyester), karpet, tas, tali plastik, wadah non-makanan."
     },
     "2": {
         "material": "High-Density Polyethylene (HDPE)",
-        "example": "Botol susu, galon, wadah deterjen, sampo.",
-        "health_risk": "Umumnya aman, tetapi bisa berbahaya jika dibakar karena menghasilkan gas beracun.",
-        "environment_risk": "Tidak mudah terurai, jika dibakar menghasilkan racun. Jika tidak didaur ulang dengan baik dapat mencemari tanah dan air.",
+        "example": "Botol susu, galon air, wadah deterjen.",
+        "health_risk": "Umumnya aman. Stabil secara kimia, tapi saat dibakar menghasilkan gas berbahaya.",
+        "environment_risk": "Sulit terurai secara alami, bisa mencemari tanah dan air bila dibuang sembarangan.",
         "recycling_difficulty": "Mudah",
-        "recycling_method": "Dicuci, dilelehkan. Produk baru: pipa, ember, tempat sampah, mainan, furnitur taman."
+        "recycling_method": "Cacah, lelehkan. Produk: pipa plastik, botol deterjen baru, mainan, furnitur taman."
     },
     "3": {
         "material": "Polyvinyl Chloride (PVC)",
-        "example": "Pipa, lantai vinyl, mainan, botol minyak.",
-        "health_risk": "Berisiko tinggi jika dibakar karena menghasilkan dioksin yang karsinogenik.",
-        "environment_risk": "Sulit didaur ulang, mengandung klorin. Jika dibakar menghasilkan racun berbahaya.",
+        "example": "Pipa, lantai vinyl, mainan.",
+        "health_risk": "Mengandung ftalat dan bisa menghasilkan dioksin saat dibakar. Berpotensi mengganggu hormon manusia.",
+        "environment_risk": "Beracun saat dibakar, sulit didaur ulang, mencemari tanah dan air.",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Daur ulang terbatas, menjadi panel, selang, atau bahan bangunan lain."
+        "recycling_method": "Terbatas. Produk: panel, selang, bahan bangunan."
     },
     "4": {
         "material": "Low-Density Polyethylene (LDPE)",
-        "example": "Kantong plastik, pembungkus makanan.",
-        "health_risk": "Cenderung aman, tapi sering tidak didaur ulang.",
-        "environment_risk": "Sangat umum sebagai limbah plastik yang berterbangan atau menyumbat saluran air. Tidak mudah terurai.",
+        "example": "Kantong plastik, bungkus makanan.",
+        "health_risk": "Relatif aman, tapi tidak stabil pada suhu tinggi.",
+        "environment_risk": "Sering tidak didaur ulang. Sangat ringan dan mudah mencemari laut, membahayakan hewan laut.",
         "recycling_difficulty": "Sedang",
-        "recycling_method": "Dilelehkan, dijadikan kantong sampah, ubin plastik, dan film daur ulang."
+        "recycling_method": "Lelehkan. Produk: ubin, kantong sampah, alas meja."
     },
     "5": {
         "material": "Polypropylene (PP)",
-        "example": "Wadah makanan, tutup botol, sedotan.",
-        "health_risk": "Aman untuk makanan, namun perlu pengawasan pada produk daur ulang.",
-        "environment_risk": "Tidak terurai alami, namun lebih stabil dan tahan panas. Bisa jadi limbah jika tidak didaur ulang.",
+        "example": "Wadah makanan, sedotan, tutup botol.",
+        "health_risk": "Umumnya aman. Tahan panas dan tidak mudah bocor bahan kimia.",
+        "environment_risk": "Cenderung tahan lama di lingkungan dan dapat mencemari ekosistem jika tidak dikelola dengan baik.",
         "recycling_difficulty": "Sedang",
-        "recycling_method": "Dicacah, dilelehkan menjadi kontainer non-makanan, komponen otomotif, ember."
+        "recycling_method": "Cacah. Produk: wadah makanan, komponen otomotif, peralatan rumah."
     },
     "6": {
         "material": "Polystyrene (PS)",
         "example": "Styrofoam, gelas kopi, wadah makanan cepat saji.",
-        "health_risk": "Mengandung stirena yang diduga karsinogenik. Tidak disarankan untuk makanan panas.",
-        "environment_risk": "Sangat ringan dan mudah mencemari perairan. Tidak bisa terurai, menjadi mikroplastik berbahaya.",
+        "health_risk": "Mengandung stirena, bahan kimia yang diduga karsinogenik.",
+        "environment_risk": "Sangat sulit terurai. Mudah pecah menjadi mikroplastik yang mencemari laut.",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Jarang didaur ulang. Bisa diproses menjadi bahan isolasi atau material bangunan."
+        "recycling_method": "Terbatas. Produk: bahan isolasi, pelapis, bahan bangunan."
     },
     "7": {
         "material": "Other (PC, PLA, dll.)",
-        "example": "Botol bayi, galon keras, PLA (bio-based).",
-        "health_risk": "Tergantung jenis. PC bisa mengandung BPA yang berisiko hormonal.",
-        "environment_risk": "Campuran bahan membuat daur ulang sulit. PLA bisa dikomposkan, tapi butuh fasilitas industri.",
+        "example": "Botol bayi, galon keras, PLA dari tumbuhan.",
+        "health_risk": "Beragam. PC bisa mengandung BPA yang berisiko mengganggu hormon.",
+        "environment_risk": "PC sulit didaur ulang, PLA hanya bisa dikomposkan di fasilitas industri.",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Bervariasi: PC melalui proses kimia, PLA bisa dikomposkan di fasilitas industri."
+        "recycling_method": "Tergantung bahan. Produk: suku cadang elektronik, bio-plastik bisa dikomposkan industri."
     }
 }
 
@@ -131,13 +136,12 @@ elif page == "Identifikasi":
                 f"<strong>Risiko Kesehatan:</strong> {info['health_risk']}<br>"
                 f"<strong>Risiko Lingkungan:</strong> {info['environment_risk']}<br>"
                 f"<strong>Tingkat Daur Ulang:</strong> {info['recycling_difficulty']}<br>"
-                f"<strong>Metode Daur Ulang:</strong> {info['recycling_method']}"
+                f"<strong>Metode Daur Ulang & Produk:</strong> {info['recycling_method']}"
                 f"</div>", unsafe_allow_html=True
             )
 
             if "history" not in st.session_state:
                 st.session_state["history"] = []
-
             st.session_state["history"].append({
                 "input_code": plastic_code_input,
                 "material": info['material']
@@ -153,27 +157,26 @@ elif page == "Tentang Plastik":
     st.title("Tentang Kode Daur Ulang Plastik")
     for code, info in ric_info.items():
         st.subheader(f"Kode {code}: {info['material']}")
-        st.write(f"**Contoh Penggunaan:** {info['example']}")
-        st.write(f"**Risiko Kesehatan:** {info['health_risk']}")
-        st.write(f"**Risiko Lingkungan:** {info['environment_risk']}")
-        st.write(f"**Tingkat Daur Ulang:** {info['recycling_difficulty']}")
-        st.write(f"**Metode Daur Ulang:** {info['recycling_method']}")
+        st.write(f"*Contoh Penggunaan:* {info['example']}")
+        st.write(f"*Risiko Kesehatan:* {info['health_risk']}")
+        st.write(f"*Risiko Lingkungan:* {info['environment_risk']}")
+        st.write(f"*Tingkat Daur Ulang:* {info['recycling_difficulty']}")
+        st.write(f"*Metode Daur Ulang & Produk:* {info['recycling_method']}")
         st.markdown("---")
 
 # --- Halaman Riwayat ---
 elif page == "Riwayat":
     st.title("Riwayat Pencarian")
     if "history" in st.session_state and st.session_state["history"]:
-        for idx, item in enumerate(st.session_state["history"],
-st.write(f"{idx}. Kode: {item['input_code']} — Material: {item['material']}")
+        for idx, item in enumerate(st.session_state["history"], start=1):
+            st.write(f"{idx}. Kode: {item['input_code']} — Material: {item['material']}")
             st.markdown("---")
     else:
         st.info("Belum ada riwayat pencarian dalam sesi ini.")
 
 # --- Footer ---
 st.markdown("---")
-st.markdown("Dibuat dengan Streamlit oleh [Kelompok 1/PLI]")
-
+st.markdown("Dibuat dengan Stream")
 
 
 
