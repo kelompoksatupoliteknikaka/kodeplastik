@@ -134,7 +134,7 @@ if page == "Home":
     Dengan memahami kode ini, kita dapat mengelola sampah plastik dengan lebih bijak dan mendukung daur ulang.
     """)
 
-# Halaman Identifikasi ---
+# ---Halaman Identifikasi ---
 st_lottie(Lottie_Identifikasi, speed=1, loop=True, quality="high", height=300)
 elif page == "Identifikasi":
     st.title("Identifikasi Kode Plastik")
