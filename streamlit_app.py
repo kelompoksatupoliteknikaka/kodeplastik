@@ -1,4 +1,18 @@
 import streamlit as st
+import streamlit as st
+import streamlit.components.v1 as components
+
+st.title("Animasi dengan Lottie")
+
+lottie_url = https://app.lottiefiles.com/share/25ed7dae-59c5-490e-807e-a42129711ad2 
+
+components.html(
+    f"""
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="{lottie_url}" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    """,
+    height=300,
+)
 
 # --- CSS Kustom ---
 st.markdown(
