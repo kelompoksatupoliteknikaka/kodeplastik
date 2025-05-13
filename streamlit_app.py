@@ -1,5 +1,24 @@
 import streamlit as st
 
+def home_page():
+    st.title("Selamat Datang di Aplikasi Identifikasi Kode Plastik!")
+    st.markdown(
+        """
+        <br>
+        Aplikasi ini dirancang untuk membantu Anda memahami kode daur ulang plastik (Resin Identification Code - RIC) yang tertera pada kemasan plastik.
+        Dengan mengetahui kode ini, Anda dapat memperoleh informasi penting mengenai:
+        <ul>
+            <li>Jenis material plastik</li>
+            <li>Contoh penggunaan umum</li>
+            <li>Potensi risiko kesehatan</li>
+            <li>Tingkat kesulitan daur ulang</li>
+            <li>Metode daur ulang yang umum</li>
+        </ul>
+        <br>
+        """,
+        unsafe_allow_html=True,
+    )
+
 # --- CSS Kustom ---
 st.markdown(
     """
