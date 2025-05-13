@@ -135,7 +135,7 @@ if page == "Home":
     """)
 
 # Halaman Identifikasi ---
-# st_lottie(Lottie_Identifikasi, speed=1, loop=True, quality="high", height=300)
+st_lottie(Lottie_Identifikasi, speed=1, loop=True, quality="high", height=300)
 elif page == "Identifikasi":
     st.title("Identifikasi Kode Plastik")
     st.write("Masukkan nomor kode plastik (1-7) yang tertera di bawah wadah.")
