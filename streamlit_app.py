@@ -1,5 +1,6 @@
 import streamlit as st
 
+#halaman pertama
 def home_page():
     st.title("Selamat Datang di Aplikasi Identifikasi Kode Plastik!")
     st.markdown(
