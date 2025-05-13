@@ -1,25 +1,5 @@
 import streamlit as st
 
-#halaman pertama
-def home_page():
-    st.title("Selamat Datang di Aplikasi Identifikasi Kode Plastik!")
-    st.markdown(
-        """
-        <br>
-        Aplikasi ini dirancang untuk membantu Anda memahami kode daur ulang plastik (Resin Identification Code - RIC) yang tertera pada kemasan plastik.
-        Dengan mengetahui kode ini, Anda dapat memperoleh informasi penting mengenai:
-        <ul>
-            <li>Jenis material plastik</li>
-            <li>Contoh penggunaan umum</li>
-            <li>Potensi risiko kesehatan</li>
-            <li>Tingkat kesulitan daur ulang</li>
-            <li>Metode daur ulang yang umum</li>
-        </ul>
-        <br>
-        """,
-        unsafe_allow_html=True,
-    )
-
 # --- CSS Kustom ---
 st.markdown(
     """
@@ -130,10 +110,33 @@ ric_info = {
 
 # --- Sidebar Navigasi ---
 st.sidebar.title("Navigasi")
-page = st.sidebar.radio("Pilih Halaman", ["Identifikasi", "Tentang Plastik", "Riwayat"])
+page = st.sidebar.radio("Pilih Halaman", ["Home", "Identifikasi", "Tentang Plastik", "Riwayat"])
+
+# --- Halaman: Home ---
+if page == "Home":
+    st.title("Selamat Datang di Aplikasi Kode Plastik!")
+    st.markdown(
+        """
+        <br>
+        Aplikasi ini dirancang untuk memberikan informasi detail mengenai kode daur ulang plastik (Resin Identification Code - RIC) yang umumnya tertera di bagian bawah kemasan plastik.
+        Dengan memahami kode ini, kita dapat lebih bijak dalam mengelola sampah plastik dan mendukung upaya daur ulang yang efektif.
+        <br>
+        **Fitur Utama:**
+        <ul>
+            <li>🔍 **Identifikasi Kode:** Masukkan nomor kode plastik untuk mendapatkan informasi spesifik tentang material, contoh penggunaan, risiko kesehatan, tingkat daur ulang, dan metode daur ulang.</li>
+            <li>📚 **Tentang Plastik:** Jelajahi daftar lengkap kode plastik beserta detail informasinya.</li>
+            <li>📜 **Riwayat Pencarian:** Lacak kode plastik yang pernah Anda cari dalam sesi ini.</li>
+        </ul>
+        <br>
+        Mari bersama-sama meningkatkan kesadaran tentang jenis-jenis plastik dan pentingnya daur ulang!
+        """,
+        unsafe_allow_html=True,
+    )
+    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Recycling_symbols.svg/800px-Recycling_symbols.svg.png", caption="Simbol Daur Ulang Plastik", use_column_width=True)
+    st.info("Gunakan navigasi di sidebar untuk menjelajahi aplikasi.")
 
 # --- Halaman: Identifikasi ---
-if page == "Identifikasi":
+elif page == "Identifikasi":
     st.title("Identifikasi Kode Plastik")
     st.write("Masukkan nomor kode plastik yang tertera di bagian bawah wadah.")
 
@@ -166,10 +169,10 @@ elif page == "Tentang Plastik":
 
     for code, info in ric_info.items():
         st.subheader(f"Kode {code}: {info['material']}")
-        st.write(f"**Contoh Penggunaan:** {info['example']}")
-        st.write(f"**Risiko Kesehatan:** {info['health_risk']}")
-        st.write(f"**Tingkat Daur Ulang:** {info['recycling_difficulty']}")
-        st.write(f"**Metode Daur Ulang:** {info['recycling_method']}")
+        st.write(f"*Contoh Penggunaan:* {info['example']}")
+        st.write(f"*Risiko Kesehatan:* {info['health_risk']}")
+        st.write(f"*Tingkat Daur Ulang:* {info['recycling_difficulty']}")
+        st.write(f"*Metode Daur Ulang:* {info['recycling_method']}")
         st.markdown("---")
 
 # --- Halaman: Riwayat ---
@@ -177,15 +180,13 @@ elif page == "Riwayat":
     st.title("Riwayat Pencarian Kode Plastik")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
-            # Pastikan kunci 'input_code' ada sebelum mencoba mengaksesnya
             if 'input_code' in item:
                 st.write(f"{idx}. Kode yang Dicari: {item['input_code']}")
-            # Pastikan kunci 'material' ada sebelum mencoba mengaksesnya
             if 'material' in item:
                 st.write(f"Material: {item['material']}")
             st.markdown("---")
-    else:
-        st.info("Belum ada riwayat pencarian kode plastik dalam sesi ini.")
+        else:
+            st.info("Belum ada riwayat pencarian kode plastik dalam sesi ini.")
 
 # --- Footer ---
 st.markdown("---")
