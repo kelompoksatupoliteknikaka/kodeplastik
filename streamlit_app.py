@@ -126,9 +126,6 @@ if page == "Home":
         Mari bersama-sama meningkatkan kesadaran tentang jenis-jenis plastik dan pentingnya daur ulang!
         """,
         unsafe_allow_html=True,
-    )
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Recycling_symbols.svg/800px-Recycling_symbols.svg.png", caption="Simbol Daur Ulang Plastik", use_column_width=True)
-    st.info("Gunakan navigasi di sidebar untuk menjelajahi aplikasi.")
 
 # --- Halaman: Identifikasi ---
 elif page == "Identifikasi":
