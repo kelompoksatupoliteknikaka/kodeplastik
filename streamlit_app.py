@@ -121,11 +121,6 @@ if page == "Home":
         Aplikasi ini dirancang untuk memberikan informasi detail mengenai kode daur ulang plastik (Resin Identification Code - RIC) yang umumnya tertera di bagian bawah kemasan plastik.
         Dengan memahami kode ini, kita dapat lebih bijak dalam mengelola sampah plastik dan mendukung upaya daur ulang yang efektif.
         <br>
-        **Fitur Utama:**
-        <ul>
-            <li>🔍 **Identifikasi Kode:** Masukkan nomor kode plastik untuk mendapatkan informasi spesifik tentang material, contoh penggunaan, risiko kesehatan, tingkat daur ulang, dan metode daur ulang.</li>
-            <li>📚 **Tentang Plastik:** Jelajahi daftar lengkap kode plastik beserta detail informasinya.</li>
-            <li>📜 **Riwayat Pencarian:** Lacak kode plastik yang pernah Anda cari dalam sesi ini.</li>
         </ul>
         <br>
         Mari bersama-sama meningkatkan kesadaran tentang jenis-jenis plastik dan pentingnya daur ulang!
