@@ -1,5 +1,3 @@
-# REVISI PENUH UNTUK APLIKASI STREAMLIT KODE PLASTIK
-
 import streamlit as st
 
 # --- CSS Kustom ---
