@@ -108,24 +108,21 @@ ric_info = {
     }
 }
 
-# --- Sidebar Navigasi ---
+# Sidebar Navigasi
 st.sidebar.title("Navigasi")
 page = st.sidebar.radio("Pilih Halaman", ["Home", "Identifikasi", "Tentang Plastik", "Riwayat"])
 
-# --- Halaman: Home ---
+# Halaman: Home
 if page == "Home":
     st.title("Selamat Datang di Aplikasi Kode Plastik!")
-    st.markdown(
-        """
-        <br>
-        Aplikasi ini dirancang untuk memberikan informasi detail mengenai kode daur ulang plastik (Resin Identification Code - RIC) yang umumnya tertera di bagian bawah kemasan plastik.
-        Dengan memahami kode ini, kita dapat lebih bijak dalam mengelola sampah plastik dan mendukung upaya daur ulang yang efektif.
-        <br>
-        </ul>
-        <br>
-        Mari bersama-sama meningkatkan kesadaran tentang jenis-jenis plastik dan pentingnya daur ulang!
-        """,
-        unsafe_allow_html=True,
+    st.markdown("""
+    <br>
+    Aplikasi ini dirancang untuk memberikan informasi detail mengenai kode daur ulang plastik (Resin Identification Code - RIC) yang sering ditemukan pada kemasan plastik.
+    Dengan memahami kode ini, kita kita lebih bijak dalam mengelola sampah plastik dan mendukung upaya daur ulang yang efektif.
+    <br>
+    <br>
+    Mari bersama-sama meningkatkan kesadaran tentang jenis-jenis plastik dan pentingnya daur ulang!
+    """, unsafe_allow_html=True)
 
 # --- Halaman: Identifikasi ---
 elif page == "Identifikasi":
