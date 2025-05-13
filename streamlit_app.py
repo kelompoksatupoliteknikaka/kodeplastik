@@ -13,7 +13,7 @@ def load_lottie_url(url):
     
 #Lottie animation 
 Lottie_Home= load_lottie_url("https://lottie.host/35845e0c-e407-44bb-861c-ce1a2485f629/01ErwGinlR.json")
-LOttie_Identifikasi= load_lottie_url("https://lottie.host/fea667ba-1c93-43c3-b7af-b56b7e36b27a/plOYn9x4nj.json")
+Lottie_Identifikasi= load_lottie_url("https://lottie.host/fea667ba-1c93-43c3-b7af-b56b7e36b27a/plOYn9x4nj.json")
 
 
 # --- CSS Kustom ---
