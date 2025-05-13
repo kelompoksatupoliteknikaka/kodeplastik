@@ -13,7 +13,7 @@ def load_lottie_url(url):
     
 #Lottie animation 
 Lottie_Home= load_lottie_url("https://lottie.host/35845e0c-e407-44bb-861c-ce1a2485f629/01ErwGinlR.json")
-Lottie_Identifikasi= load_lottie_url("https://lottie.host/fea667ba-1c93-43c3-b7af-b56b7e36b27a/plOYn9x4nj.json")
+Lottie_Tentang_Plastik= load_lottie_url("https://lottie.host/fea667ba-1c93-43c3-b7af-b56b7e36b27a/plOYn9x4nj.json")
 
 
 # --- CSS Kustom ---
@@ -135,7 +135,6 @@ if page == "Home":
     """)
 
 # ---Halaman Identifikasi ---
-st_lottie(Lottie_Identifikasi, speed=1, loop=True, quality="high", height=300)
 elif page == "Identifikasi":
     st.title("Identifikasi Kode Plastik")
     st.write("Masukkan nomor kode plastik (1-7) yang tertera di bawah wadah.")
@@ -172,6 +171,7 @@ elif page == "Identifikasi":
             )
 
 # --- Halaman Tentang Plastik ---
+st_lottie(Lottie_Tentang_Plastik, speed=1, loop=True, quality="high", height=300)
 elif page == "Tentang Plastik":
     st.title("Tentang Kode Daur Ulang Plastik")
     for code, info in ric_info.items():
