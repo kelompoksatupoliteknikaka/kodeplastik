@@ -13,6 +13,7 @@ def load_lottie_url(url):
     
 #Lottie animation 
 Lottie_Home= load_lottie_url("https://lottie.host/35845e0c-e407-44bb-861c-ce1a2485f629/01ErwGinlR.json")
+Lottie_Identifikasi= load_lottie_url("https://lottie.host/598f0f5e-9eaa-41ba-a3da-f8d1d32fce47/LM3j9ALEj6.json")
 
 
 
@@ -135,6 +136,7 @@ if page == "Home":
     """)
 
 # ---Halaman Identifikasi ---
+st_lottie(Lottie_Identifikasi, speed=1, loop=True, quality="high", height=300)
 elif page == "Identifikasi":
     st.title("Identifikasi Kode Plastik")
     st.write("Masukkan nomor kode plastik (1-7) yang tertera di bawah wadah.")
