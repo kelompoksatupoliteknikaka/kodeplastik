@@ -82,7 +82,7 @@ ric_info = {
         "material": "Low-Density Polyethylene (LDPE)",
         "example": "Kantong plastik, pembungkus makanan",
         "health_risk": "Aman, tapi sering tidak didaur ulang"
-        "recycling_difficulty": "Sedang",
+        "recycling_difficulty": "Sedang"
         "recycling_method": "Lelehkan, jadi ubin, kantong sampah"
     },
     "5": {
