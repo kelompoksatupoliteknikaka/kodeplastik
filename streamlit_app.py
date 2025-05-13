@@ -165,7 +165,14 @@ elif page == "Riwayat":
     st.title("Riwayat Pencarian")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"],
+st.write(f"{idx}. Kode: {item['input_code']} — Material: {item['material']}")
+            st.markdown("---")
+    else:
+        st.info("Belum ada riwayat pencarian dalam sesi ini.")
 
+# --- Footer ---
+st.markdown("---")
+st.markdown("Dibuat dengan Streamlit oleh [Kelompok 1/PLI]")
 
 
 
