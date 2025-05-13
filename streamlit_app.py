@@ -4,7 +4,7 @@ import streamlit.components.v1 as components
 
 st.title("Animasi dengan Lottie")
 
-lottie_url = https://app.lottiefiles.com/share/25ed7dae-59c5-490e-807e-a42129711ad2 
+lottie_url = "https://app.lottiefiles.com/share/25ed7dae-59c5-490e-807e-a42129711ad2"
 
 components.html(
     f"""
