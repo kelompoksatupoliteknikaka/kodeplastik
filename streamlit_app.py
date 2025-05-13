@@ -64,7 +64,7 @@ ric_info = {
     "1": {
         "material": "Polyethylene Terephthalate (PET)",
         "example": "Botol air mineral, botol soda, kemasan minyak goreng.",
-        "health_risk": "Aman untuk sekali pakai. Tidak disarankan dipakai ulang, terutama untuk air panas, karena dapat melepaskan zat kimia berbahaya seperti antimony.",
+        "health_risk": "Aman untuk sekali pakai. Tidak disarankan dipakai ulang, terutama untuk air panas, karena dapat melepaskan zat kimia berbahaya seperti antimon.",
         "environment_risk": "PET sering tidak masuk sistem daur ulang dan bisa mencemari laut serta termakan satwa. Terurai menjadi mikroplastik yang masuk ke rantai makanan.",
         "recycling_difficulty": "Mudah",
         "recycling_method": "Cuci, cacah, lelehkan. Produk: serat sintetis (polyester), karpet, tas, tali plastik, wadah non-makanan."
