@@ -176,7 +176,7 @@ elif page == "Riwayat":
 
 # --- Footer ---
 st.markdown("---")
-st.markdown("Dibuat dengan Stream")
+st.markdown("Dibuat dengan Streamlit oleh kelompok 1")
 
 
 
