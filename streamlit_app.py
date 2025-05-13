@@ -1,5 +1,20 @@
 import streamlit as st
 
+import io
+from streamlit_lottie import st_lottie
+import requests
+
+# Fungsi untuk memuat animasi lottie dari URL
+def load_lottie_url(url):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+    
+#Lottie animation 
+Lottie_Home= load_lottie_url("https://lottie.host/35845e0c-e407-44bb-861c-ce1a2485f629/01ErwGinlR.json")
+
+
 # --- CSS Kustom ---
 st.markdown(
     """
@@ -109,7 +124,8 @@ ric_info = {
 st.sidebar.title("Navigasi")
 page = st.sidebar.radio("Pilih Halaman", ["Home", "Identifikasi", "Tentang Plastik", "Riwayat"])
 
-# --- Halaman Home ---
+# --- Halaman Home --- 
+st_lottie(Lottie_Home, speed=1, loop=True, quality="high", height=300)
 if page == "Home":
     st.title("Selamat Datang di Aplikasi Kode Plastik!")
     st.markdown("""
