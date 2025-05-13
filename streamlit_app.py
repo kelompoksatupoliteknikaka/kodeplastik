@@ -51,15 +51,18 @@ ric_info = {
         "material": "Polyethylene Terephthalate (PET)",
         "example": "Botol air mineral, botol soda, kemasan minyak goreng.",
         "health_risk": "Aman untuk sekali pakai, tidak dianjurkan digunakan ulang terutama untuk air panas.",
+        "environment_risk": "PET adalah salah satu jenis plastik yang paling banyak digunakan, terutama untuk botol air dan minuman. Meski bisa didaur ulang, tidak semua PET berhasil masuk ke sistem daur ulang. Jika dibuang sembarangan, botol PET bisa bertahan ratusan tahun di lingkungan. PET sangat umum ditemukan di sungai, laut, dan pantai. Karena sifatnya yang ringan dan mudah terbawa angin atau air, plastik PET sering dikonsumsi oleh satwa liar seperti burung laut dan ikan. Ini menyebabkan cedera internal, kelaparan karena perut penuh plastik, bahkan kematian. PET juga dapat terurai menjadi mikroplastik yang mencemari rantai makanan laut dan akhirnya berdampak pada kesehatan manusia.",
+        "recycling_difficulty": "Mudah",
         "recycling_difficulty": "Mudah",
         "recycling_method": "Cuci, cacah, lelehkan. Hasil daur ulang: serat sintetis (polyester), karpet, tali plastik, wadah non-makanan."
     },
     "2": {
         "material": "High-Density Polyethylene (HDPE)",
-        "example": "Botol susu, galon air, wadah deterjen.",
-        "health_risk": "Umumnya aman dan stabil.",
+        "example": " Biasa ditemukan pada wadah minuman komersil (susu, jus, soda), detergen, sampo, cairan pembersih berbahan kimia, serta beberapa kantong plastik.",
+        "health_risk": "HDPE adalah salah satu jenis plastik paling stabil secara kimia dan umumnya aman untuk kontak dengan makanan dan minuman. Tidak melepaskan bahan kimia berbahaya dalam kondisi normal. Namun, produk daur ulang HDPE bisa mengandung kontaminan jika tidak melalui proses daur ulang yang bersih. Namun, saat HDPE terbakar, ia dapat melepaskan gas beracun dan bahan kimia berbahaya yang dapat mencemari udara dan membahayakan kesehatan manusia. ",
+        "environment_risk": "HDPE yang tidak terurai secara biologis dan tertimbun di tanah dapat mencemari tanah dan air tanah. 
         "recycling_difficulty": "Mudah",
-        "recycling_method": "Cacah, lelehkan, jadi pipa, ember, produk rumah tangga."
+        "recycling_method": "Cacah, lelehkan dan dilelehkan menjadi produk baru, seperti pipa, ember, produk rumah tangga, pipa plastik ember, tempat sampah, botol deterjen baru, mainan plastik, hingga furnitur taman"
     },
     "3": {
         "material": "Polyvinyl Chloride (PVC)",
