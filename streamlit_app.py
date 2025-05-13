@@ -134,8 +134,8 @@ if page == "Home":
     Dengan memahami kode ini, kita dapat mengelola sampah plastik dengan lebih bijak dan mendukung daur ulang.
     """)
 
-# --- Halaman Identifikasi ---
-st_lottie(Lottie_Identifikasi, speed=1, loop=True, quality="high", height=300)
+# Halaman Identifikasi ---
+# st_lottie(Lottie_Identifikasi, speed=1, loop=True, quality="high", height=300)
 elif page == "Identifikasi":
     st.title("Identifikasi Kode Plastik")
     st.write("Masukkan nomor kode plastik (1-7) yang tertera di bawah wadah.")
@@ -146,14 +146,17 @@ elif page == "Identifikasi":
             st.subheader(f"Informasi Kode Plastik: {plastic_code_input}")
             info = ric_info[plastic_code_input]
             st.markdown(
-                f"<div class='info-box'>"
-                f"<strong>Material:</strong> {info['material']}<br>"
-                f"<strong>Contoh Penggunaan:</strong> {info['example']}<br>"
-                f"<strong>Risiko Kesehatan:</strong> {info['health_risk']}<br>"
-                f"<strong>Risiko Lingkungan:</strong> {info['environment_risk']}<br>"
-                f"<strong>Tingkat Daur Ulang:</strong> {info['recycling_difficulty']}<br>"
-                f"<strong>Metode Daur Ulang & Produk:</strong> {info['recycling_method']}"
-                f"</div>", unsafe_allow_html=True
+                f"""
+                <div class='info-box'>
+                    <strong>Material:</strong> {info['material']}<br>
+                    <strong>Contoh Penggunaan:</strong> {info['example']}<br>
+                    <strong>Risiko Kesehatan:</strong> {info['health_risk']}<br>
+                    <strong>Risiko Lingkungan:</strong> {info['environment_risk']}<br>
+                    <strong>Tingkat Daur Ulang:</strong> {info['recycling_difficulty']}<br>
+                    <strong>Metode Daur Ulang & Produk:</strong> {info['recycling_method']}
+                </div>
+                """,
+                unsafe_allow_html=True
             )
 
             if "history" not in st.session_state:
