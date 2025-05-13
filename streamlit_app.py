@@ -157,6 +157,7 @@ elif page == "Riwayat":
     st.title("Riwayat Pencarian Kode Plastik")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
+            pass
 
 
 
