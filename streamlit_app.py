@@ -59,10 +59,12 @@ CLASS_NAMES = {
 ric_info = {
     "1": {
         "material": "Polyethylene Terephthalate (PET)",
-        "example": "Botol air mineral, botol minuman ringan, kemasan minyak goreng",
-        "health_risk": "Aman untuk sekali pakai. Pemakaian ulang atau panas bisa lepas antimon.",
+        "example": "Biasa ditemukan pada air dalam kemasan komersil; berwujud transparan dan cenderung tipis seperti botol air mineral, botol minuman ringan, kemasan minyak goreng",
+        "health_risk": "Aman untuk sekali pakai, botol bekas minuman ini tidak dianjurkan untuk dipakai ulang. Kalaupun terdesak untuk dipakai ulang: jangan terlalu sering, dan hindari menyimpan air hangat atau panas di dalamnya.",
         "recycling_difficulty": "Mudah",
-        "recycling_method": "Cuci, cacah, lelehkan; jadi serat, karpet, wadah non-makanan"
+        "recycling_method": "Cuci, cacah, lelehkan, dan pemanfaatan ulang
+        hasil daur ulang bisa berupa serat, karpet, wadah non-makanan, serat sintetis untuk pakaian (polyester), karpet, dan tas
+        kemasan makanan non-primer, tali strapping plastik"
     },
     "2": {
         "material": "High-Density Polyethylene (HDPE)",
@@ -81,7 +83,7 @@ ric_info = {
     "4": {
         "material": "Low-Density Polyethylene (LDPE)",
         "example": "Kantong plastik, pembungkus makanan",
-        "health_risk": "Aman, tapi sering tidak didaur ulang",
+        "health_risk": "Aman, tapi sering tidak didaur ulang"
         "recycling_difficulty": "Sedang",
         "recycling_method": "Lelehkan, jadi ubin, kantong sampah"
     },
