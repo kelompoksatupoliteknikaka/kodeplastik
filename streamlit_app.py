@@ -60,7 +60,7 @@ ric_info = {
         "material": "High-Density Polyethylene (HDPE)",
         "example": " Biasa ditemukan pada wadah minuman komersil (susu, jus, soda), detergen, sampo, cairan pembersih berbahan kimia, serta beberapa kantong plastik.",
         "health_risk": "HDPE adalah salah satu jenis plastik paling stabil secara kimia dan umumnya aman untuk kontak dengan makanan dan minuman. Tidak melepaskan bahan kimia berbahaya dalam kondisi normal. Namun, produk daur ulang HDPE bisa mengandung kontaminan jika tidak melalui proses daur ulang yang bersih. Namun, saat HDPE terbakar, ia dapat melepaskan gas beracun dan bahan kimia berbahaya yang dapat mencemari udara dan membahayakan kesehatan manusia. ",
-        "environment_risk": "HDPE yang tidak terurai secara biologis dan tertimbun di tanah dapat mencemari tanah dan air tanah. 
+        "environment_risk": "HDPE yang tidak terurai secara biologis dan tertimbun di tanah dapat mencemari tanah dan air tanah."
         "recycling_difficulty": "Mudah",
         "recycling_method": "Cacah, lelehkan dan dilelehkan menjadi produk baru, seperti pipa, ember, produk rumah tangga, pipa plastik ember, tempat sampah, botol deterjen baru, mainan plastik, hingga furnitur taman"
     },
