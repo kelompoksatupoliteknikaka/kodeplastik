@@ -1,5 +1,4 @@
 import streamlit as st
-
 import io
 from streamlit_lottie import st_lottie
 import requests
