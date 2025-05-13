@@ -45,117 +45,107 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- Data Kode Plastik (tetap sama) ---
-CLASS_NAMES = {
-    0: "1 (PET atau PETE)",
-    1: "2 (HDPE)",
-    2: "3 (PVC atau V)",
-    3: "4 (LDPE)",
-    4: "5 (PP)",
-    5: "6 (PS)",
-    6: "7 (Lain-lain)"
-}
-
+# --- Data Kode Plastik ---
 ric_info = {
     "1": {
         "material": "Polyethylene Terephthalate (PET)",
-        "example": "Biasa ditemukan pada air dalam kemasan komersil; berwujud transparan dan cenderung tipis seperti botol air mineral, botol minuman ringan, kemasan minyak goreng",
-        "health_risk": "Aman untuk sekali pakai, botol bekas minuman ini tidak dianjurkan untuk dipakai ulang. Kalaupun terdesak untuk dipakai ulang: jangan terlalu sering, dan hindari menyimpan air hangat atau panas di dalamnya.",
+        "example": "Botol air mineral, botol soda, kemasan minyak goreng.",
+        "health_risk": "Aman untuk sekali pakai, tidak dianjurkan digunakan ulang terutama untuk air panas.",
         "recycling_difficulty": "Mudah",
-        "recycling_method": "Cuci, cacah, lelehkan, dan pemanfaatan ulang hasil daur ulang bisa berupa serat, karpet, wadah non-makanan, serat sintetis untuk pakaian (polyester), karpet, dan tas kemasan makanan non-primer, tali strapping plastik"
+        "recycling_method": "Cuci, cacah, lelehkan. Hasil daur ulang: serat sintetis (polyester), karpet, tali plastik, wadah non-makanan."
     },
     "2": {
         "material": "High-Density Polyethylene (HDPE)",
-        "example": "Botol susu, galon air, wadah deterjen",
-        "health_risk": "Umumnya aman dan stabil",
+        "example": "Botol susu, galon air, wadah deterjen.",
+        "health_risk": "Umumnya aman dan stabil.",
         "recycling_difficulty": "Mudah",
-        "recycling_method": "Cacah, lelehkan, jadi pipa, ember, produk rumah tangga"
+        "recycling_method": "Cacah, lelehkan, jadi pipa, ember, produk rumah tangga."
     },
     "3": {
         "material": "Polyvinyl Chloride (PVC)",
-        "example": "Pipa, lantai vinyl, mainan",
-        "health_risk": "Mengandung ftalat, berisiko jika dibakar (dioksin)",
+        "example": "Pipa, lantai vinyl, mainan.",
+        "health_risk": "Mengandung ftalat, berisiko jika dibakar (dioksin).",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Daur ulang terbatas, jadi panel, selang"
+        "recycling_method": "Daur ulang terbatas, bisa jadi panel atau selang."
     },
     "4": {
         "material": "Low-Density Polyethylene (LDPE)",
-        "example": "Kantong plastik, pembungkus makanan",
-        "health_risk": "Aman, tapi sering tidak didaur ulang"
-        "recycling_difficulty": "Sedang"
-        "recycling_method": "Lelehkan, jadi ubin, kantong sampah"
+        "example": "Kantong plastik, pembungkus makanan.",
+        "health_risk": "Aman, tapi sering tidak didaur ulang.",
+        "recycling_difficulty": "Sedang",
+        "recycling_method": "Lelehkan, jadi ubin, kantong sampah."
     },
     "5": {
         "material": "Polypropylene (PP)",
-        "example": "Wadah microwave, sedotan, tutup botol",
-        "health_risk": "Umumnya aman",
+        "example": "Wadah microwave, sedotan, tutup botol.",
+        "health_risk": "Umumnya aman.",
         "recycling_difficulty": "Sedang",
-        "recycling_method": "Cacah, jadi komponen otomotif, wadah"
+        "recycling_method": "Cacah, jadi komponen otomotif, wadah."
     },
     "6": {
         "material": "Polystyrene (PS)",
-        "example": "Styrofoam, gelas kopi, wadah cepat saji",
-        "health_risk": "Berpotensi bahaya (mengandung stirena)",
+        "example": "Styrofoam, gelas kopi, wadah cepat saji.",
+        "health_risk": "Berpotensi bahaya (mengandung stirena).",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Beberapa bisa jadi bahan isolasi"
+        "recycling_method": "Beberapa bisa jadi bahan isolasi."
     },
     "7": {
         "material": "Other (PC, PLA, dll.)",
-        "example": "Botol bayi (PC), galon keras, PLA bio",
-        "health_risk": "Bervariasi (PC bisa mengandung BPA)",
+        "example": "Botol bayi (PC), galon keras, PLA bio.",
+        "health_risk": "Bervariasi (PC bisa mengandung BPA).",
         "recycling_difficulty": "Sulit",
-        "recycling_method": "Tergantung bahan; PLA bisa dikomposkan industri"
+        "recycling_method": "Tergantung bahan; PLA bisa dikomposkan industri."
     }
 }
 
-# Sidebar Navigasi
+# --- Navigasi Sidebar ---
 st.sidebar.title("Navigasi")
 page = st.sidebar.radio("Pilih Halaman", ["Home", "Identifikasi", "Tentang Plastik", "Riwayat"])
 
-# Halaman: Home
+# --- Halaman Home ---
 if page == "Home":
     st.title("Selamat Datang di Aplikasi Kode Plastik!")
     st.markdown("""
-    <br>
-    Aplikasi ini dirancang untuk memberikan informasi detail mengenai kode daur ulang plastik (Resin Identification Code - RIC) yang sering ditemukan pada kemasan plastik.
-    Dengan memahami kode ini, kita kita lebih bijak dalam mengelola sampah plastik dan mendukung upaya daur ulang yang efektif.
-    <br>
-    <br>
-    Mari bersama-sama meningkatkan kesadaran tentang jenis-jenis plastik dan pentingnya daur ulang!
-    """, unsafe_allow_html=True)
+    Aplikasi ini memberikan informasi tentang kode daur ulang plastik (Resin Identification Code - RIC).
+    Dengan memahami kode ini, kita dapat mengelola sampah plastik dengan lebih bijak dan mendukung daur ulang.
+    """)
 
-# --- Halaman: Identifikasi ---
+# --- Halaman Identifikasi ---
 elif page == "Identifikasi":
     st.title("Identifikasi Kode Plastik")
-    st.write("Masukkan nomor kode plastik yang tertera di bagian bawah wadah.")
+    st.write("Masukkan nomor kode plastik (1-7) yang tertera di bawah wadah.")
 
     plastic_code_input = st.text_input("Nomor Kode Plastik:")
     if st.button("Cari Informasi"):
         if plastic_code_input in ric_info:
             st.subheader(f"Informasi Kode Plastik: {plastic_code_input}")
-            st.markdown(f"<div class='info-box'><strong>Material:</strong> {ric_info[plastic_code_input]['material']}<br>"
-                        f"<strong>Contoh Penggunaan:</strong> {ric_info[plastic_code_input]['example']}<br>"
-                        f"<strong>Risiko Kesehatan:</strong> {ric_info[plastic_code_input]['health_risk']}<br>"
-                        f"<strong>Tingkat Daur Ulang:</strong> {ric_info[plastic_code_input]['recycling_difficulty']}<br>"
-                        f"<strong>Metode Daur Ulang:</strong> {ric_info[plastic_code_input]['recycling_method']}</div>",
-                        unsafe_allow_html=True)
+            info = ric_info[plastic_code_input]
+            st.markdown(
+                f"<div class='info-box'>"
+                f"<strong>Material:</strong> {info['material']}<br>"
+                f"<strong>Contoh Penggunaan:</strong> {info['example']}<br>"
+                f"<strong>Risiko Kesehatan:</strong> {info['health_risk']}<br>"
+                f"<strong>Tingkat Daur Ulang:</strong> {info['recycling_difficulty']}<br>"
+                f"<strong>Metode Daur Ulang:</strong> {info['recycling_method']}"
+                f"</div>", unsafe_allow_html=True
+            )
 
-            # Simpan ke session_state sebagai riwayat
             if "history" not in st.session_state:
                 st.session_state["history"] = []
 
             st.session_state["history"].append({
                 "input_code": plastic_code_input,
-                "material": ric_info[plastic_code_input]['material']
+                "material": info['material']
             })
         elif plastic_code_input:
-            st.markdown("<div class='warning-box'>Kode plastik tidak valid. Silakan masukkan nomor 1 hingga 7.</div>", unsafe_allow_html=True)
+            st.markdown(
+                "<div class='warning-box'>Kode plastik tidak valid. Masukkan angka 1 hingga 7.</div>",
+                unsafe_allow_html=True
+            )
 
-# --- Halaman: Tentang Plastik ---
+# --- Halaman Tentang Plastik ---
 elif page == "Tentang Plastik":
     st.title("Tentang Kode Daur Ulang Plastik")
-    st.write("Berikut adalah informasi tentang berbagai jenis plastik berdasarkan kode daur ulang:")
-
     for code, info in ric_info.items():
         st.subheader(f"Kode {code}: {info['material']}")
         st.write(f"*Contoh Penggunaan:* {info['example']}")
@@ -164,22 +154,20 @@ elif page == "Tentang Plastik":
         st.write(f"*Metode Daur Ulang:* {info['recycling_method']}")
         st.markdown("---")
 
-# --- Halaman: Riwayat ---
+# --- Halaman Riwayat ---
 elif page == "Riwayat":
-    st.title("Riwayat Pencarian Kode Plastik")
+    st.title("Riwayat Pencarian")
     if "history" in st.session_state and st.session_state["history"]:
         for idx, item in enumerate(st.session_state["history"], start=1):
-            if 'input_code' in item:
-                st.write(f"{idx}. Kode yang Dicari: {item['input_code']}")
-            if 'material' in item:
-                st.write(f"Material: {item['material']}")
+            st.write(f"{idx}. Kode: {item['input_code']} — Material: {item['material']}")
             st.markdown("---")
-        else:
-            st.info("Belum ada riwayat pencarian kode plastik dalam sesi ini.")
+    else:
+        st.info("Belum ada riwayat pencarian dalam sesi ini.")
 
 # --- Footer ---
 st.markdown("---")
 st.markdown("Dibuat dengan Streamlit oleh [Kelompok 1/PLI]")
+
 
 
 
