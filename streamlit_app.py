@@ -1,8 +1,6 @@
 import streamlit as st
-
-import io
-from streamlit_lottie import st_lottie
 import requests
+from streamlit_lottie import st_lottie
 
 # Fungsi untuk memuat animasi lottie dari URL
 def load_lottie_url(url):
@@ -10,11 +8,11 @@ def load_lottie_url(url):
     if r.status_code != 200:
         return None
     return r.json()
-    
-#Lottie animation 
-Lottie_Home= load_lottie_url("https://lottie.host/35845e0c-e407-44bb-861c-ce1a2485f629/01ErwGinlR.json")
 
-#--- CSS Kustom ---
+# Animasi Lottie untuk halaman Home
+Lottie_Home = load_lottie_url("https://lottie.host/35845e0c-e407-44bb-861c-ce1a2485f629/01ErwGinlR.json")
+
+# --- CSS Kustom ---
 st.markdown(
     """
     <style>
@@ -129,8 +127,8 @@ st.sidebar.title("Navigasi")
 page = st.sidebar.radio("Pilih Halaman", ["Home", "Identifikasi", "Tentang Plastik", "Riwayat"])
 
 # --- Halaman Home --- 
-st_lottie(Lottie_Home, speed=1, loop=True, quality="high", height=300)
 if page == "Home":
+    st_lottie(Lottie_Home, speed=1, loop=True, quality="high", height=300)
     st.title("Selamat Datang di Aplikasi Kode Plastik!")
     st.markdown("""
     Aplikasi ini memberikan informasi tentang kode daur ulang plastik (Resin Identification Code - RIC).
@@ -161,6 +159,7 @@ elif page == "Identifikasi":
                 unsafe_allow_html=True
             )
 
+            # Simpan ke riwayat sesi
             if "history" not in st.session_state:
                 st.session_state["history"] = []
             st.session_state["history"].append({
@@ -197,7 +196,7 @@ elif page == "Riwayat":
 
 # --- Footer ---
 st.markdown("---")
-st.markdown("Dibuat dengan Streamlit oleh Kelompok 1")
+st.markdown("Dibuat dengan Streamlit oleh **Kelompok 1**")
 
 
 
