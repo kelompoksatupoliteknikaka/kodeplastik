@@ -14,6 +14,7 @@ def load_lottie_url(url):
 #Lottie animation 
 Lottie_Home= load_lottie_url("https://lottie.host/35845e0c-e407-44bb-861c-ce1a2485f629/01ErwGinlR.json")
 
+#--- CSS Kustom ---
 st.markdown(
     """
     <style>
