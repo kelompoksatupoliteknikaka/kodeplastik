@@ -44,18 +44,20 @@ st.markdown(
         font-weight: bold;
     }
     .info-box {
-        background-color: #f0f8ff;
-        border: 1px solid #e0e0e0;
+        background-color: #000080; 
+        border: 1px solid #4169E1;
         padding: 15px;
         border-radius: 5px;
         margin-bottom: 10px;
+        color: white; 
     }
     .warning-box {
-        background-color: #ffe0b2;
-        border: 1px solid #ffc107;
+        background-color: #000080;
+        border: 1px solid #B0C4DE; 
         padding: 15px;
         border-radius: 5px;
         margin-bottom: 10px;
+        color: white;
     }
     </style>
     """,
